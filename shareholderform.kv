@@ -1,0 +1,3658 @@
+OpeningPasswordWindow:
+
+<RegistrationWindow>:
+    GridLayout:
+        cols: 1
+        BoxLayout:
+            size_hint: 1,None
+            height: dp(180)
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'background_files/white.jpg'
+            Image:
+                source:'LOGO-TECH PROGRAM.png'
+                size_hint:None,None
+                height: dp(180)
+                width: dp(180)
+            Label:
+                text: 'LE FORM  VENTURA  GLOBAL LLP'
+                color:0,0,0,0.7
+                bold: True
+                font_size:50
+
+        ScrollView:
+            id: scroll_view_registration
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 0.7
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'background_files/tech.jpg'
+
+            GridLayout:
+                size_hint: 1, None
+                height: self.minimum_height
+                cols:1
+                spacing: 70
+                padding:40,30
+
+                GridLayout:
+                    cols: 1
+                    MDFillRoundFlatIconButton:
+                        text: 'Back'
+                        size_hint:None, None
+                        icon: 'arrow-left-circle'
+                        height: dp(40)
+                        width: dp(100)
+                        #background_color: 1, 165/255, 0, 0.2
+                        color: 1, 168/255, 0, 1
+                        #background_normal: ''
+                        on_press:
+                            root.manager.current = 'OpeningWindow'
+                            root.manager.transition.direction = 'right'
+                Label:
+                    text: 'SHAREHOLDER REGISTRATION FORM'
+                    color: 0,0,0,1
+                    font_size: dp(25)
+                    bold: True
+                    size_hint: 1,None
+                    height: dp(70)
+
+
+                Label:
+                    text: 'Section 1: SHAREHOLDER DETAILS'
+                    color: 0,0,0,1
+                    font_size: dp(20)
+                    size_hint: 0.5,None
+                    height: dp(1)
+                    bold: True
+
+
+                MDTextField:
+                    id: first_name
+                    hint_text: 'First Name'
+                    mode: 'fill'
+                    max_text_length: 30
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    text: ''
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    background_color: 255/255,163/255,0,0.2
+                    multiline: False
+
+
+                MDTextField:
+                    id: surname
+                    hint_text: 'Surname/Family name'
+                    mode: 'fill'
+                    max_text_length: 30
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    text: ''
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    background_color: 255/255,163/255,0,0.2
+                    multiline: False
+
+                Label:
+                    text: 'Gender:'
+                    color: 0,0,0,1
+                    font_size: dp(19)
+                    size_hint: 0.5, None
+                    height:dp(1)
+                    bold: True
+                GridLayout:
+                    cols: 5
+                    Label:
+                        size_hint: None,None
+                        width: dp(480)
+                    Label:
+                        text: 'Male:'
+                        color: 0,0,0,1
+                        font_size: dp(16)
+                        size_hint: None, None
+                        #height:dp(1)
+                        bold: True
+                    MDCheckbox:
+                        id: male_checkbox
+                        size_hint: None,None
+                        on_press: root.male_checkbox(self)
+                    Label:
+                        text: 'Female:'
+                        color: 0,0,0,1
+                        font_size: dp(16)
+                        size_hint: None, None
+                        #height:dp(1)
+                        bold: True
+                    MDCheckbox:
+                        id: female_checkbox
+                        size_hint: None,None
+                        on_press: root.female_checkbox(self)
+                Label:
+                    size_hint: 1,None
+                    height: dp(20)
+
+
+                MDTextField:
+                    id: date_of_birth
+                    hint_text: 'Date of Birth'
+                    mode: 'fill'
+                    max_text_length: 10
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    text: ''
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    background_color: 255/255,163/255,0,0.2
+                    multiline: False
+                    on_text: self.text = self.text.replace(' ','')
+                    helper_text: 'DD/MM/YYYY'
+                    validator: 'date'
+                    date_format: 'dd/mm/yyyy'
+                    date_interval: "01/01/1900", None
+
+                MDTextField:
+                    id: postal_address
+                    hint_text: 'Postal Address'
+                    text: ''
+                    mode: 'fill'
+                    max_text_length: 120
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+
+                MDTextField:
+                    id: post_code
+                    hint_text: 'Post Code'
+                    mode: 'fill'
+                    max_text_length: 120
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+                    on_text: self.text = self.text.replace(' ','')
+
+                Label:
+                    text: 'Mobile phone no:'
+                    color: 0,0,0,1
+                    bold: True
+                    font_size: dp(19)
+                    size_hint: 0.5, None
+                    height:dp(1)
+
+
+
+                GridLayout:
+                    cols: 3
+                    MDTextField:
+                        id: mobile_phone_no_india
+                        hint_text: 'India'
+                        mode: 'fill'
+                        max_text_length: 13
+                        helper_text: 'Eg: +910123456789'
+                        fill_color_normal: 1,1,1,1
+                        on_focus:
+                            self.required = True
+                        size_hint: 0.5, None
+                        height: dp(55)
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    Label:
+                        size_hint: None,None
+                    MDTextField:
+                        id: mobile_phone_no_abroad
+                        hint_text: 'Work Place'
+                        mode: 'fill'
+                        max_text_length: 15
+                        helper_text: 'Eg: +(Country Code)0123456789'
+                        fill_color_normal: 1,1,1,1
+                        on_focus:
+                            self.required = True
+                        size_hint: 0.5, None
+                        height: dp(55)
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                Label:
+                    size_hint: 1, None
+
+                MDTextField:
+                    id: iqama_ref
+                    hint_text: 'IQAMA REF#'
+                    mode: 'fill'
+                    max_text_length: 15
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+                    on_text: self.text = self.text.replace(' ','')
+
+
+                MDTextField:
+                    id: passport_ref
+                    hint_text: 'Passport Ref#'
+                    mode: 'fill'
+                    max_text_length: 15
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+                    on_text: self.text = self.text.replace(' ','')
+
+                MDTextField:
+                    id: email_address
+                    hint_text: 'Email Address'
+                    mode: 'fill'
+                    max_text_length: 30
+                    helper_text: 'user@gmail.com'
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+                    on_text: self.text = self.text.replace(' ','')
+                    validator: "email"
+
+                MDTextField:
+                    id: work_place
+                    hint_text: 'Work Place'
+                    mode: 'fill'
+                    max_text_length: 30
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+                Label:
+                    text: 'Installment Details:'
+                    color: 0,0,0,1
+                    font_size: dp(19)
+                    bold: True
+                    size_hint: 0.5, None
+                    height:dp(1)
+                Label:
+                    text: 'NOTE: Please Press Enter After Entering The Amount To See Total'
+                    color: 1,0,0,1
+                    font_size: dp(17)
+                    bold: True
+                    size_hint: 0.5, None
+                    height:dp(1)
+                GridLayout:
+                    spacing: 40
+                    cols: 12
+                    Label:
+                        size_hint: 1,None
+                        height:dp(1)
+                    Label:
+                        text: '1'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '2'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '3'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '4'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '5'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '6'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '7'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '8'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '9'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '10'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        id: total_amount
+                        text: 'Total'
+                        size_hint:None,None
+                        height: dp(1)
+                        width: dp(10)
+                        bold: True
+                        color: 1,1,1,1
+                        font_size: dp(19)
+                    GridLayout:
+                        rows:3
+                        Label:
+                        Label:
+                            text: 'Amount:'
+                            size_hint:1,None
+                            height: dp(1)
+                            color: 0,0,0,1
+                            font_size: dp(19)
+                        Label:
+                    TextInput:
+                        id: amount_1
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_2
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_3
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_4
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_5
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_6
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_7
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_8
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_9
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_10
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: total_amount
+                        text: root.total
+                        size_hint: 1, None
+                        height: dp(30)
+                        #background_color: 255/255,163/255,0,0.2
+                        multiline: False
+                        color: 0,0,0,1
+                        on_text: self.text = root.total
+                    GridLayout:
+                        rows:3
+                        Label:
+                        Label:
+                            text: 'Date:'
+                            size_hint:1,None
+                            height: dp(1)
+                            color: 0,0,0,1
+                            font_size: dp(19)
+                        Label:
+                    TextInput:
+                        id: date_1
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_2
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_3
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_4
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_5
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_6
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_7
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_8
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_9
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_10
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+
+
+
+                Label:
+                    size_hint: 1,None
+                    height: dp(70)
+                GridLayout:
+                    cols: 3
+                    MDTextField:
+                        id: photo_location_path
+                        #text: "C:/Users/user/PycharmProjects/ShareHolder Registration Form/background_files/images.jpg"
+                        hint_text: 'Photo Path Location'
+                        readonly: True
+                        mode: 'fill'
+                        fill_color_normal: 1,1,1,1
+                        on_focus:
+                            self.required = True
+                        size_hint: 0.5, None
+                        height: dp(55)
+                        multiline: False
+                    Label:
+                        size_hint: None,None
+                    MDFillRoundFlatIconButton:
+                        text: 'Browse'
+                        size_hint:None, None
+                        icon: 'file-search'
+                        height: dp(40)
+                        width: dp(100)
+                        #background_color: 1, 165/255, 0, 0.2
+                        color: 1, 168/255, 0, 1
+                        #background_normal: ''
+                        on_press:
+                            root.browse1()
+                Label:
+                    size_hint: 1,None
+                    height: dp(100)
+                Label:
+                    text: 'Photo Identification provided:'
+                    color: 0,0,0,1
+                    font_size: dp(19)
+                    bold: True
+                    size_hint: 0.5, None
+                    height:dp(1)
+                Label:
+                    text: "NOTE: If Your Selection Is 'Other' Please Mention The Source In The Given Blank :"
+                    color: 1,0,0,1
+                    font_size: dp(17)
+                    bold: True
+                    size_hint: 0.5, None
+                    height:dp(1)
+                GridLayout:
+                    cols: 4
+                    Label:
+                    Label:
+                        text: 'Drivers License:'
+                        color: 0,0,0,1
+                        font_size: dp(16)
+                        bold: True
+                        size_hint: None, None
+
+                    MDCheckbox:
+                        id: checkbox1
+                        size_hint: None,None
+                        pos_hint:{'x':0.75}
+                        on_active: root.checkbox_1(self.active)
+                    Label:
+
+                GridLayout:
+                    cols: 4
+                    Label:
+                    Label:
+                        text: 'Passport:'
+                        color: 0,0,0,1
+                        font_size: dp(16)
+                        bold: True
+                        size_hint: None, None
+
+                    MDCheckbox:
+                        id: checkbox2
+                        size_hint: None,None
+                        pos_hint:{'x':0.75}
+                        on_active: root.checkbox_2(self.active)
+                    Label:
+                GridLayout:
+                    cols: 4
+                    Label:
+                    Label:
+                        text: 'Other:'
+                        color: 0,0,0,1
+                        font_size: dp(16)
+                        bold: True
+                        size_hint: None, None
+
+                    MDCheckbox:
+                        id: checkbox3
+                        size_hint: None,None
+                        pos_hint:{'x':0.75}
+                        on_active: root.checkbox_3(self.active)
+                    GridLayout:
+                        rows:3
+                        Label:
+                        MDTextField:
+                            id: other
+                            text: ''
+                            hint_text: 'Other Source'
+                            mode: 'fill'
+                            max_text_length: 25
+                            fill_color_normal: 1,1,1,1
+                            on_focus:
+                                self.required = True
+                            size_hint: 0.5, None
+                            height: dp(30)
+                            multiline: False
+                        Label:
+                Label:
+                GridLayout:
+                    cols: 3
+                    MDTextField:
+                        id: photo_identification_path
+                        hint_text: 'Photo Path Of Identification'
+                        mode: 'fill'
+                        max_text_length: 120
+                        readonly: True
+                        fill_color_normal: 1,1,1,1
+                        on_focus:
+                            self.required = True
+                        size_hint: 1, None
+                        height: dp(55)
+                        multiline: False
+                    Label:
+                        size_hint: None,None
+
+                    MDFillRoundFlatIconButton:
+                        text: 'Browse'
+                        size_hint:None, None
+                        icon: 'file-search'
+                        height: dp(40)
+                        width: dp(100)
+                        #background_color: 1, 165/255, 0, 0.2
+                        color: 1, 168/255, 0, 1
+                        #background_normal: ''
+                        on_press:
+                            root.browse2()
+
+                Label:
+                    size_hint: 1,None
+                    height: dp(50)
+
+                Label:
+                    text: 'Section 2: PERSONAL DETAILS'
+                    color: 0,0,0,1
+                    font_size: dp(20)
+                    bold: True
+                    size_hint: 0.5,None
+                    height: dp(1)
+
+                MDTextField:
+                    id: father_name
+                    text: ''
+                    hint_text: 'Father Name'
+                    mode: 'fill'
+                    max_text_length: 30
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(30)
+                    multiline: False
+
+
+                MDTextField:
+                    id: mother_name
+                    text: ''
+                    hint_text: 'Mother Name'
+                    mode: 'fill'
+                    max_text_length: 30
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+
+                Label:
+                    text: "NOMINEE DETAILS:"
+                    color: 0,0,0,1
+                    font_size: dp(19)
+                    bold: True
+                    size_hint: 0.5, None
+                    height:dp(1)
+
+
+                GridLayout:
+                    cols:3
+                    Label:
+                        text: 'NAME'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        bold: True
+                        size_hint: 0.5, None
+
+                    Label:
+                        text: 'RELATION WITH SH.'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        bold: True
+                        size_hint: 0.5, None
+                        height:
+                    Label:
+                        text: 'PERCENTAGE'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        bold: True
+                        size_hint: 0.5, None
+                        height:
+                GridLayout:
+                    cols: 4
+
+                    Label:
+                        text: '1.'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        size_hint: None, None
+                        width: dp(10)
+                        height:dp(10)
+
+                    TextInput:
+                        id: name_1
+                        text: ''
+                        hint_text: '1.'
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: relation_1
+                        text: ''
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: percentage_1
+                        text: ''
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_percentage1_sign(self.text)
+                    Label:
+                        text: '2.'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        size_hint: None, None
+                        width: dp(10)
+                        height:dp(10)
+                    TextInput:
+                        id: name_2
+                        text: ''
+                        hint_text: '2.'
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: relation_2
+                        text: ''
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: percentage_2
+                        text: ''
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_percentage2_sign(self.text)
+                    Label:
+                        text: '3.'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        size_hint: None, None
+                        width: dp(10)
+                        height:dp(10)
+                    TextInput:
+                        id: name_3
+                        text: ''
+                        hint_text: '3.'
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: relation_3
+                        text: ''
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: percentage_3
+                        text: ''
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_percentage3_sign(self.text)
+                    Label:
+                        text: '4.'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        size_hint: None, None
+                        width: dp(10)
+                        height:dp(10)
+                    TextInput:
+                        id: name_4
+                        text: ''
+                        hint_text: '4.'
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: relation_4
+                        text: ''
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: percentage_4
+                        text: ''
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_percentage4_sign(self.text)
+                Label:
+                    size_hint: 1,None
+                    height: dp(70)
+
+                MDTextField:
+                    id: other_details
+                    text: ''
+                    hint_text: 'Other Details If Any'
+                    mode: 'fill'
+                    max_text_length: 120
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+
+                MDTextField:
+                    id: suggested_by
+                    text: ''
+                    hint_text: 'Suggested By'
+                    mode: 'fill'
+                    max_text_length: 50
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+
+                GridLayout:
+                    cols:3
+                    Label:
+                        size_hint: None, None
+                    MDFillRoundFlatIconButton:
+                        text:'ADD SHAREHOLDER'
+                        icon: 'plus-circle-outline'
+                        size_hint: 1, None
+                        height: 70
+                        #background_normal: ''
+                        pos_hint: {'center_x':0.5}
+                        on_press:
+                            root.generate_certificate()
+
+                    Label:
+                        size_hint: None, None
+                Label:
+                    size_hint: 1, None
+                    height: 100
+
+
+
+
+<OpeningWindow>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Image:
+        source: 'background_files/tech1.jpg'
+        #size_hint: None,None
+        size: self.size
+        width: dp(1000)
+        color: (1,1,1,0.7)
+        allow_stretch: True
+        keep_ratio: False
+    GridLayout:
+        spacing: 30
+        padding: 40,30
+        rows: 7
+        GridLayout:
+            cols: 2
+
+            Image:
+                source:'LOGO-TECH PROGRAM.jpg'
+                size_hint:None,None
+                height: dp(180)
+                width: dp(180)
+            Label:
+                text: 'LE FORM  VENTURA  GLOBAL LLP'
+                color:0,0,0,0.5
+                bold: True
+                font_size:50
+        Label:
+            size_hint: None,None
+            height: dp(500)
+    BoxLayout:
+        spacing: 50
+        orientation: 'vertical'
+        MDFillRoundFlatIconButton:
+            text: 'New Share Holder'
+            font_size: 30
+            bold: True
+            size_hint: 0.75,None
+            height: dp(60)
+            #md_bg_color: (1,165/255,0,1)
+            icon: 'account-multiple-plus-outline'
+            pos_hint: {'center_x': 0.5}
+            on_press:
+                root.manager.current = 'RegistrationWindow'
+                root.manager.transition.direction = 'left'
+        MDFillRoundFlatIconButton:
+            text: 'View Existing Share Holder'
+            font_size: 30
+            icon: 'account-eye'
+            #md_bg_color: (1,165/255,0,1)
+            bold: True
+            size_hint: 0.75,None
+            height: dp(60)
+            pos_hint: {'center_x': 0.5}
+            on_press:
+                root.manager.current = 'SearchWindow'
+                root.manager.transition.direction = 'left'
+                root.set_call_page(False)
+        MDFillRoundFlatIconButton:
+            text: 'Total ShareHolders'
+            font_size: 30
+            icon: 'account-group-outline'
+            #md_bg_color: (1,165/255,0,1)
+            bold: True
+            size_hint: 0.75,None
+            height: dp(60)
+            pos_hint: {'center_x': 0.5}
+            on_press:
+                root.total_shareholders()
+        MDFillRoundFlatIconButton:
+            text: 'Administrative Page'
+            font_size: 30
+            icon: 'account-network-outline'
+            #md_bg_color: (1,165/255,0,1)
+            bold: True
+            size_hint: 0.75,None
+            height: dp(60)
+            pos_hint: {'center_x': 0.5}
+            on_press:
+                root.ask_admin_password()
+
+        Label:
+            size_hint: 1,None
+            height: dp(1)
+
+<SearchWindow>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Image:
+        source: 'background_files/hologram1.jpg'
+        #size_hint: None,None
+        size: self.size
+        width: dp(1000)
+        color: (1,1,1,0.7)
+        allow_stretch: True
+        keep_ratio: False
+    GridLayout:
+        spacing: 30
+        padding: 40,10
+        cols:1
+        GridLayout:
+            cols: 2
+
+            Image:
+                source:'LOGO-TECH PROGRAM.jpg'
+                size_hint:None,None
+                height: dp(180)
+                width: dp(180)
+            Label:
+                text: 'LE FORM  VENTURA  GLOBAL LLP'
+                color:0,0,0,0.7
+                bold: True
+                font_size:50
+
+        Label:
+            size_hint: None, None
+        MDFillRoundFlatIconButton:
+            text: 'Back'
+            size_hint:None, None
+            icon: 'arrow-left-circle'
+            height: dp(40)
+            width: dp(100)
+            #background_color: 1, 165/255, 0, 0.2
+            color: 1, 168/255, 0, 1
+            #background_normal: ''
+            on_press:
+                root.manager.current = 'OpeningWindow'
+                root.manager.transition.direction = 'right'
+        Label:
+            text: 'About Existing Registration'
+            color: 0,0,0,1
+            font_size: dp(25)
+            bold: True
+            size_hint: 1,None
+
+
+            canvas.before:
+                Color:
+                    rgba: 1,165/255,0,1
+                Line:
+
+                    width: 5
+                    rectangle: self.x, self.y, self.width, self.height
+        GridLayout:
+            cols:3
+            Label:
+                size_hint: None,None
+                width: dp(200)
+            MDTextField:
+                id: registration_no
+                text: ''
+                hint_text: 'Registration No'
+                mode: 'fill'
+                max_text_length: 4
+                fill_color_normal: 0.9,0.9,0.9,1
+                size_hint: 0.5, None
+                height: dp(55)
+                multiline: False
+                on_text:
+                    self.text = self.text.replace(' ','')
+            Label:
+                size_hint: None,None
+                width: dp(200)
+        GridLayout:
+            cols:3
+
+            MDFillRoundFlatIconButton:
+                text: 'Search'
+                size_hint:1, None
+                icon: 'account-search'
+                height: dp(40)
+                width: dp(100)
+                #background_color: 1, 165/255, 0, 0.2
+                md_bg_color: 1, 168/255, 0, 1
+                #background_normal: ''
+                on_press:
+                    #root.manager.current = 'EditingWindow'
+                    root.get_registration_no()
+
+            Label:
+                size_hint: None, None
+
+
+            MDFillRoundFlatIconButton:
+                text: 'Delete'
+                size_hint:1, None
+                icon: 'delete'
+                height: dp(40)
+                width: dp(100)
+                #background_color: 1, 165/255, 0, 0.2
+                md_bg_color: 1, 168/255, 0, 1
+                #background_normal: ''
+                on_press:
+                    #root.manager.current = 'EditingWindow'
+                    root.delete()
+
+        Label:
+            size_hint: 1, None
+            height: 100
+
+
+<EditingWindow>:
+    GridLayout:
+        cols: 1
+        BoxLayout:
+            size_hint: 1,None
+            height: dp(180)
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'background_files/white.jpg'
+            Image:
+                source:'LOGO-TECH PROGRAM.png'
+                size_hint:None,None
+                height: dp(180)
+                width: dp(180)
+            Label:
+                text: 'LE FORM  VENTURA  GLOBAL LLP'
+                color:0,0,0,0.7
+                bold: True
+                font_size:50
+
+        ScrollView:
+            id: scroll_view_edit
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 0.7
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'background_files/tech.jpg'
+
+            GridLayout:
+                size_hint: 1, None
+                height: self.minimum_height
+                cols:1
+                spacing: 70
+                padding:40,30
+                GridLayout:
+                    cols: 1
+                    MDFillRoundFlatIconButton:
+                        text: 'Back'
+                        size_hint:None, None
+                        icon: 'arrow-left-circle'
+                        height: dp(40)
+                        width: dp(100)
+                        #background_color: 1, 165/255, 0, 0.2
+                        color: 1, 168/255, 0, 1
+                        #background_normal: ''
+                        on_press:
+                            root.manager.current = 'OpeningWindow'
+                            root.manager.transition.direction = 'right'
+                            root.parent.get_screen('SearchWindow').ids.registration_no.text = ''
+                Label:
+                    text: 'EDIT SHAREHOLDER DETAILS'
+                    color: 0,0,0,1
+                    font_size: dp(25)
+                    bold: True
+                    size_hint: 1,None
+                    height: dp(70)
+
+
+                Label:
+                    text: 'Section 1: SHAREHOLDER DETAILS'
+                    color: 0,0,0,1
+                    font_size: dp(20)
+                    size_hint: 0.5,None
+                    height: dp(1)
+                    bold: True
+
+
+                MDTextField:
+                    id: first_name
+                    hint_text: 'First Name'
+                    mode: 'fill'
+                    max_text_length: 30
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    text: ''
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    background_color: 255/255,163/255,0,0.2
+                    multiline: False
+
+
+                MDTextField:
+                    id: surname
+                    hint_text: 'Surname/Family name'
+                    mode: 'fill'
+                    max_text_length: 30
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    text: ''
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    background_color: 255/255,163/255,0,0.2
+                    multiline: False
+
+                Label:
+                    text: 'Gender:'
+                    color: 0,0,0,1
+                    font_size: dp(19)
+                    size_hint: 0.5, None
+                    height:dp(1)
+                    bold: True
+                GridLayout:
+                    cols: 5
+                    Label:
+                        size_hint: None,None
+                        width: dp(480)
+                    Label:
+                        text: 'Male:'
+                        color: 0,0,0,1
+                        font_size: dp(16)
+                        size_hint: None, None
+                        #height:dp(1)
+                        bold: True
+                    MDCheckbox:
+                        id: male_checkbox
+                        size_hint: None,None
+                        on_press: root.male_checkbox(self)
+                    Label:
+                        text: 'Female:'
+                        color: 0,0,0,1
+                        font_size: dp(16)
+                        size_hint: None, None
+                        #height:dp(1)
+                        bold: True
+                    MDCheckbox:
+                        id: female_checkbox
+                        size_hint: None,None
+                        on_press: root.female_checkbox(self)
+                Label:
+                    size_hint: 1,None
+                    height: dp(20)
+
+
+                MDTextField:
+                    id: date_of_birth
+                    hint_text: 'Date of Birth'
+                    mode: 'fill'
+                    max_text_length: 10
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    text: ''
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    background_color: 255/255,163/255,0,0.2
+                    multiline: False
+                    on_text: self.text = self.text.replace(' ','')
+                    helper_text: 'DD/MM/YYYY'
+                    validator: 'date'
+                    date_format: 'dd/mm/yyyy'
+                    date_interval: "01/01/1900", None
+
+                MDTextField:
+                    id: postal_address
+                    hint_text: 'Postal Address'
+                    text: ''
+                    mode: 'fill'
+                    max_text_length: 120
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+
+                MDTextField:
+                    id: post_code
+                    hint_text: 'Post Code'
+                    mode: 'fill'
+                    max_text_length: 120
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+                    on_text: self.text = self.text.replace(' ','')
+
+                Label:
+                    text: 'Mobile phone no:'
+                    color: 0,0,0,1
+                    bold: True
+                    font_size: dp(19)
+                    size_hint: 0.5, None
+                    height:dp(1)
+
+
+
+                GridLayout:
+                    cols: 3
+                    MDTextField:
+                        id: mobile_phone_no_india
+                        hint_text: 'India'
+                        mode: 'fill'
+                        max_text_length: 13
+                        helper_text: 'Eg: +910123456789'
+                        fill_color_normal: 1,1,1,1
+                        on_focus:
+                            self.required = True
+                        size_hint: 0.5, None
+                        height: dp(55)
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    Label:
+                        size_hint: None,None
+                    MDTextField:
+                        id: mobile_phone_no_abroad
+                        hint_text: 'Work Place'
+                        mode: 'fill'
+                        max_text_length: 15
+                        helper_text: 'Eg: +(Country Code)0123456789'
+                        fill_color_normal: 1,1,1,1
+                        on_focus:
+                            self.required = True
+                        size_hint: 0.5, None
+                        height: dp(55)
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                Label:
+                    size_hint: 1, None
+
+                MDTextField:
+                    id: iqama_ref
+                    hint_text: 'IQAMA REF#'
+                    mode: 'fill'
+                    max_text_length: 15
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+                    on_text: self.text = self.text.replace(' ','')
+
+
+                MDTextField:
+                    id: passport_ref
+                    hint_text: 'Passport Ref#'
+                    mode: 'fill'
+                    max_text_length: 15
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+                    on_text: self.text = self.text.replace(' ','')
+
+                MDTextField:
+                    id: email_address
+                    hint_text: 'Email Address'
+                    mode: 'fill'
+                    max_text_length: 30
+                    helper_text: 'user@gmail.com'
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+                    on_text: self.text = self.text.replace(' ','')
+                    validator: "email"
+
+                MDTextField:
+                    id: work_place
+                    hint_text: 'Work Place'
+                    mode: 'fill'
+                    max_text_length: 30
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+                Label:
+                    text: 'Installment Details:'
+                    color: 0,0,0,1
+                    font_size: dp(19)
+                    bold: True
+                    size_hint: 0.5, None
+                    height:dp(1)
+                Label:
+                    text: 'NOTE: Please Press Enter After Entering The Amount To See Total'
+                    color: 1,0,0,1
+                    font_size: dp(17)
+                    bold: True
+                    size_hint: 0.5, None
+                    height:dp(1)
+                GridLayout:
+                    spacing: 40
+                    cols: 12
+                    Label:
+                        size_hint: 1,None
+                        height:dp(1)
+                    Label:
+                        text: '1'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '2'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '3'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '4'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '5'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '6'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '7'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '8'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '9'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '10'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        id: total_amount
+                        text: 'Total'
+                        size_hint:None,None
+                        height: dp(1)
+                        width: dp(10)
+                        bold: True
+                        color: 1,1,1,1
+                        font_size: dp(19)
+                    GridLayout:
+                        rows:3
+                        Label:
+                        Label:
+                            text: 'Amount:'
+                            size_hint:1,None
+                            height: dp(1)
+                            color: 0,0,0,1
+                            font_size: dp(19)
+                        Label:
+                    TextInput:
+                        id: amount_1
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_2
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_3
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_4
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_5
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_6
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_7
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_8
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_9
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_10
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: total_amount
+                        text: root.total
+                        size_hint: 1, None
+                        height: dp(30)
+                        #background_color: 255/255,163/255,0,0.2
+                        multiline: False
+                        color: 0,0,0,1
+                        on_text: self.text = root.total
+                    GridLayout:
+                        rows:3
+                        Label:
+                        Label:
+                            text: 'Date:'
+                            size_hint:1,None
+                            height: dp(1)
+                            color: 0,0,0,1
+                            font_size: dp(19)
+                        Label:
+                    TextInput:
+                        id: date_1
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_2
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_3
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_4
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_5
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_6
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_7
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_8
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_9
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_10
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+
+
+
+                Label:
+                    size_hint: 1,None
+                    height: dp(70)
+                GridLayout:
+                    cols: 5
+                    MDTextField:
+                        id: photo_location_path
+                        #text: "C:/Users/user/PycharmProjects/ShareHolder Registration Form/background_files/images.jpg"
+                        hint_text: 'Photo Path Location'
+                        readonly: True
+                        mode: 'fill'
+                        fill_color_normal: 1,1,1,1
+                        on_focus:
+                            self.required = True
+                        size_hint: 0.5, None
+                        height: dp(55)
+                        multiline: False
+
+                    Label:
+                        size_hint: None,None
+
+                    MDFillRoundFlatIconButton:
+                        text: 'Browse'
+                        size_hint:None, None
+                        icon: 'file-search'
+                        height: dp(40)
+                        width: dp(100)
+                        #background_color: 1, 165/255, 0, 0.2
+                        color: 1, 168/255, 0, 1
+                        #background_normal: ''
+                        on_press:
+                            root.browse1()
+
+                    Label:
+                        size_hint: None,None
+                    MDFloatingActionButton:
+                        icon: "image-search"
+                        on_press: root.show_image()
+                Label:
+                    size_hint: 1,None
+                    height: dp(100)
+                Label:
+                    text: 'Photo Identification provided:'
+                    color: 0,0,0,1
+                    font_size: dp(19)
+                    bold: True
+                    size_hint: 0.5, None
+                    height:dp(1)
+                Label:
+                    text: "NOTE: If Your Selection Is 'Other' Please Mention The Source In The Given Blank :"
+                    color: 1,0,0,1
+                    font_size: dp(17)
+                    bold: True
+                    size_hint: 0.5, None
+                    height:dp(1)
+                GridLayout:
+                    cols: 4
+                    Label:
+                    Label:
+                        text: 'Drivers License:'
+                        color: 0,0,0,1
+                        font_size: dp(16)
+                        bold: True
+                        size_hint: None, None
+
+                    MDCheckbox:
+                        id: checkbox1
+                        size_hint: None,None
+                        pos_hint:{'x':0.75}
+                        on_active: root.checkbox_1(self.active)
+                    Label:
+
+                GridLayout:
+                    cols: 4
+                    Label:
+                    Label:
+                        text: 'Passport:'
+                        color: 0,0,0,1
+                        font_size: dp(16)
+                        bold: True
+                        size_hint: None, None
+
+                    MDCheckbox:
+                        id: checkbox2
+                        size_hint: None,None
+                        pos_hint:{'x':0.75}
+                        on_active: root.checkbox_2(self.active)
+                    Label:
+                GridLayout:
+                    cols: 4
+                    Label:
+                    Label:
+                        text: 'Other:'
+                        color: 0,0,0,1
+                        font_size: dp(16)
+                        bold: True
+                        size_hint: None, None
+
+                    MDCheckbox:
+                        id: checkbox3
+                        size_hint: None,None
+                        pos_hint:{'x':0.75}
+                        on_active: root.checkbox_3(self.active)
+                    GridLayout:
+                        rows:3
+                        Label:
+                        MDTextField:
+                            id: other
+                            text: ''
+                            hint_text: 'Other Source'
+                            mode: 'fill'
+                            max_text_length: 25
+                            fill_color_normal: 1,1,1,1
+                            on_focus:
+                                self.required = True
+                            size_hint: 0.5, None
+                            height: dp(30)
+                            multiline: False
+                        Label:
+                Label:
+                GridLayout:
+                    cols: 3
+                    MDTextField:
+                        id: photo_identification_path
+                        hint_text: 'Photo Path Of Identification'
+                        mode: 'fill'
+                        readonly: True
+                        max_text_length: 120
+                        fill_color_normal: 1,1,1,1
+                        on_focus:
+                            self.required = True
+                        size_hint: 1, None
+                        height: dp(55)
+                        multiline: False
+                    Label:
+                        size_hint: None,None
+
+                    MDFillRoundFlatIconButton:
+                        text: 'Browse'
+                        size_hint:None, None
+                        icon: 'file-search'
+                        height: dp(40)
+                        width: dp(100)
+                        #background_color: 1, 165/255, 0, 0.2
+                        color: 1, 168/255, 0, 1
+                        #background_normal: ''
+                        on_press:
+                            root.browse2()
+
+                Label:
+                    size_hint: 1,None
+                    height: dp(50)
+
+                Label:
+                    text: 'Section 2: PERSONAL DETAILS'
+                    color: 0,0,0,1
+                    font_size: dp(20)
+                    bold: True
+                    size_hint: 0.5,None
+                    height: dp(1)
+
+                MDTextField:
+                    id: father_name
+                    text: ''
+                    hint_text: 'Father Name'
+                    mode: 'fill'
+                    max_text_length: 30
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(30)
+                    multiline: False
+
+
+                MDTextField:
+                    id: mother_name
+                    text: ''
+                    hint_text: 'Mother Name'
+                    mode: 'fill'
+                    max_text_length: 30
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+
+                Label:
+                    text: "NOMINEE DETAILS:"
+                    color: 0,0,0,1
+                    font_size: dp(19)
+                    bold: True
+                    size_hint: 0.5, None
+                    height:dp(1)
+
+
+                GridLayout:
+                    cols:3
+                    Label:
+                        text: 'NAME'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        bold: True
+                        size_hint: 0.5, None
+
+                    Label:
+                        text: 'RELATION WITH SH.'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        bold: True
+                        size_hint: 0.5, None
+                        height:
+                    Label:
+                        text: 'PERCENTAGE'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        bold: True
+                        size_hint: 0.5, None
+                        height:
+                GridLayout:
+                    cols: 4
+
+                    Label:
+                        text: '1.'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        size_hint: None, None
+                        width: dp(10)
+                        height:dp(10)
+
+                    TextInput:
+                        id: name_1
+                        text: ''
+                        hint_text: '1.'
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: relation_1
+                        text: ''
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: percentage_1
+                        text: ''
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_percentage1_sign(self.text)
+                    Label:
+                        text: '2.'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        size_hint: None, None
+                        width: dp(10)
+                        height:dp(10)
+                    TextInput:
+                        id: name_2
+                        text: ''
+                        hint_text: '2.'
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: relation_2
+                        text: ''
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: percentage_2
+                        text: ''
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_percentage2_sign(self.text)
+                    Label:
+                        text: '3.'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        size_hint: None, None
+                        width: dp(10)
+                        height:dp(10)
+                    TextInput:
+                        id: name_3
+                        text: ''
+                        hint_text: '3.'
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: relation_3
+                        text: ''
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: percentage_3
+                        text: ''
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_percentage3_sign(self.text)
+                    Label:
+                        text: '4.'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        size_hint: None, None
+                        width: dp(10)
+                        height:dp(10)
+                    TextInput:
+                        id: name_4
+                        text: ''
+                        hint_text: '4.'
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: relation_4
+                        text: ''
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: percentage_4
+                        text: ''
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_percentage4_sign(self.text)
+                Label:
+                    size_hint: 1,None
+                    height: dp(70)
+
+                MDTextField:
+                    id: other_details
+                    text: ''
+                    hint_text: 'Other Details If Any'
+                    mode: 'fill'
+                    max_text_length: 120
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+
+                MDTextField:
+                    id: suggested_by
+                    text: ''
+                    hint_text: 'Suggested By'
+                    mode: 'fill'
+                    max_text_length: 50
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+
+
+                GridLayout:
+                    cols:3
+                    Label:
+                        size_hint: None, None
+                    MDFillRoundFlatIconButton:
+                        text:'SAVE CHANGES'
+                        icon: 'content-save-edit'
+                        size_hint: 1, None
+                        height: 70
+                        #background_normal: ''
+                        pos_hint: {'center_x':0.5}
+                        on_press: root.ask_admin_password()
+
+                    Label:
+                        size_hint: None, None
+                Label:
+                    size_hint: 1, None
+                    height: 100
+
+
+<ViewWindow>:
+    GridLayout:
+        cols: 1
+        BoxLayout:
+            size_hint: 1,None
+            height: dp(180)
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'background_files/white.jpg'
+            Image:
+                source:'LOGO-TECH PROGRAM.png'
+                size_hint:None,None
+                height: dp(180)
+                width: dp(180)
+            Label:
+                text: 'LE FORM  VENTURA  GLOBAL LLP'
+                color:0,0,0,0.7
+                bold: True
+                font_size:50
+
+        ScrollView:
+            id: scroll_view_view
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 0.7
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'background_files/tech.jpg'
+
+            GridLayout:
+                size_hint: 1, None
+                height: self.minimum_height
+                cols:1
+                spacing: 70
+                padding:40,30
+                GridLayout:
+                    cols: 1
+                    MDFillRoundFlatIconButton:
+                        text: 'Back'
+                        size_hint:None, None
+                        icon: 'arrow-left-circle'
+                        height: dp(40)
+                        width: dp(100)
+                        #background_color: 1, 165/255, 0, 0.2
+                        color: 1, 168/255, 0, 1
+                        #background_normal: ''
+                        on_press:
+                            root.manager.current = 'OpeningWindow'
+                            root.manager.transition.direction = 'right'
+                            root.parent.get_screen('SearchWindow').ids.registration_no.text = ''
+
+                Label:
+                    text: 'SHAREHOLDER DETAILS (READ ONLY)'
+                    color: 0,0,0,1
+                    font_size: dp(25)
+                    bold: True
+                    size_hint: 1,None
+                    height: dp(70)
+
+
+                Label:
+                    text: 'Section 1: SHAREHOLDER DETAILS'
+                    color: 0,0,0,1
+                    font_size: dp(20)
+                    size_hint: 0.5,None
+                    height: dp(1)
+                    bold: True
+
+
+                MDTextField:
+                    id: first_name
+                    hint_text: 'First Name'
+                    readonly: True
+                    mode: 'fill'
+                    max_text_length: 30
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    text: ''
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    background_color: 255/255,163/255,0,0.2
+                    multiline: False
+
+
+                MDTextField:
+                    id: surname
+                    hint_text: 'Surname/Family name'
+                    readonly: True
+                    mode: 'fill'
+                    max_text_length: 30
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    text: ''
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    background_color: 255/255,163/255,0,0.2
+                    multiline: False
+
+                Label:
+                    text: 'Gender:'
+                    color: 0,0,0,1
+                    font_size: dp(19)
+                    size_hint: 0.5, None
+                    height:dp(1)
+                    bold: True
+                GridLayout:
+                    cols: 5
+                    Label:
+                        size_hint: None,None
+                        width: dp(480)
+                    Label:
+                        text: 'Male:'
+                        color: 0,0,0,1
+                        font_size: dp(16)
+                        size_hint: None, None
+                        #height:dp(1)
+                        bold: True
+                    MDCheckbox:
+                        id: male_checkbox
+                        size_hint: None,None
+                        on_press:
+                            root.keep_state_gender()
+                    Label:
+                        text: 'Female:'
+                        color: 0,0,0,1
+                        font_size: dp(16)
+                        size_hint: None, None
+                        #height:dp(1)
+                        bold: True
+                    MDCheckbox:
+                        id: female_checkbox
+                        size_hint: None,None
+                        on_press:
+                            root.keep_state_gender()
+
+                Label:
+                    size_hint: 1,None
+                    height: dp(20)
+
+
+                MDTextField:
+                    id: date_of_birth
+                    hint_text: 'Date of Birth'
+                    readonly: True
+                    mode: 'fill'
+                    max_text_length: 10
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    text: ''
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    background_color: 255/255,163/255,0,0.2
+                    multiline: False
+                    on_text: self.text = self.text.replace(' ','')
+                    helper_text: 'DD/MM/YYYY'
+                    validator: 'date'
+                    date_format: 'dd/mm/yyyy'
+                    date_interval: "01/01/1900", None
+
+                MDTextField:
+                    id: postal_address
+                    hint_text: 'Postal Address'
+                    readonly: True
+                    text: ''
+                    mode: 'fill'
+                    max_text_length: 120
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+
+                MDTextField:
+                    id: post_code
+                    hint_text: 'Post Code'
+                    readonly: True
+                    mode: 'fill'
+                    max_text_length: 120
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+                    on_text: self.text = self.text.replace(' ','')
+
+                Label:
+                    text: 'Mobile phone no:'
+                    color: 0,0,0,1
+                    bold: True
+                    font_size: dp(19)
+                    size_hint: 0.5, None
+                    height:dp(1)
+
+
+
+                GridLayout:
+                    cols: 3
+                    MDTextField:
+                        id: mobile_phone_no_india
+                        hint_text: 'India'
+                        mode: 'fill'
+                        max_text_length: 13
+                        helper_text: 'Eg: +910123456789'
+                        readonly: True
+                        fill_color_normal: 1,1,1,1
+                        on_focus:
+                            self.required = True
+                        size_hint: 0.5, None
+                        height: dp(55)
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    Label:
+                        size_hint: None,None
+                    MDTextField:
+                        id: mobile_phone_no_abroad
+                        hint_text: 'Work Place'
+                        mode: 'fill'
+                        max_text_length: 15
+                        helper_text: 'Eg: +(Country Code)0123456789'
+                        readonly: True
+                        fill_color_normal: 1,1,1,1
+                        on_focus:
+                            self.required = True
+                        size_hint: 0.5, None
+                        height: dp(55)
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                Label:
+                    size_hint: 1, None
+
+                MDTextField:
+                    id: iqama_ref
+                    hint_text: 'IQAMA REF#'
+                    mode: 'fill'
+                    max_text_length: 15
+                    fill_color_normal: 1,1,1,1
+                    readonly: True
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+                    on_text: self.text = self.text.replace(' ','')
+
+
+                MDTextField:
+                    id: passport_ref
+                    hint_text: 'Passport Ref#'
+                    mode: 'fill'
+                    max_text_length: 15
+                    readonly: True
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+                    on_text: self.text = self.text.replace(' ','')
+
+                MDTextField:
+                    id: email_address
+                    hint_text: 'Email Address'
+                    readonly: True
+                    mode: 'fill'
+                    max_text_length: 30
+                    helper_text: 'user@gmail.com'
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+                    on_text: self.text = self.text.replace(' ','')
+                    validator: "email"
+
+                MDTextField:
+                    id: work_place
+                    hint_text: 'Work Place'
+                    mode: 'fill'
+                    readonly: True
+                    max_text_length: 30
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+                Label:
+                    text: 'Installment Details:'
+                    color: 0,0,0,1
+                    font_size: dp(19)
+                    bold: True
+                    size_hint: 0.5, None
+                    height:dp(1)
+                Label:
+                    text: 'NOTE: Please Press Enter After Entering The Amount To See Total'
+                    color: 1,0,0,1
+                    font_size: dp(17)
+                    bold: True
+                    size_hint: 0.5, None
+                    height:dp(1)
+                GridLayout:
+                    spacing: 40
+                    cols: 12
+                    Label:
+                        size_hint: 1,None
+                        height:dp(1)
+                    Label:
+                        text: '1'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '2'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '3'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '4'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '5'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '6'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '7'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '8'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '9'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        text: '10'
+                        size_hint:1,None
+                        height: dp(1)
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                    Label:
+                        id: total_amount
+                        text: 'Total'
+                        size_hint:None,None
+                        height: dp(1)
+                        width: dp(10)
+                        bold: True
+                        color: 1,1,1,1
+                        font_size: dp(19)
+                    GridLayout:
+                        rows:3
+                        Label:
+                        Label:
+                            text: 'Amount:'
+                            size_hint:1,None
+                            height: dp(1)
+                            color: 0,0,0,1
+                            font_size: dp(19)
+                        Label:
+                    TextInput:
+                        id: amount_1
+                        readonly: True
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_2
+                        readonly: True
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_3
+                        readonly: True
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_4
+                        readonly: True
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_5
+                        readonly: True
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_6
+                        readonly: True
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_7
+                        readonly: True
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_8
+                        readonly: True
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_9
+                        readonly: True
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: amount_10
+                        readonly: True
+                        text: '0'
+                        on_text_validate: root.add_installment(self)
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_installment(self)
+                    TextInput:
+                        id: total_amount
+                        readonly: True
+                        text: root.total
+                        size_hint: 1, None
+                        height: dp(30)
+                        #background_color: 255/255,163/255,0,0.2
+                        multiline: False
+                        color: 0,0,0,1
+                        on_text: self.text = root.total
+                    GridLayout:
+                        rows:3
+                        Label:
+                        Label:
+                            text: 'Date:'
+                            size_hint:1,None
+                            height: dp(1)
+                            color: 0,0,0,1
+                            font_size: dp(19)
+                        Label:
+                    TextInput:
+                        id: date_1
+                        readonly: True
+                        text: ''
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_2
+                        text: ''
+                        readonly: True
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_3
+                        text: ''
+                        size_hint: 1, None
+                        readonly: True
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_4
+                        text: ''
+                        size_hint: 1, None
+                        readonly: True
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_5
+                        text: ''
+                        size_hint: 1, None
+                        readonly: True
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_6
+                        text: ''
+                        size_hint: 1, None
+                        readonly: True
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_7
+                        text: ''
+                        size_hint: 1, None
+                        readonly: True
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_8
+                        text: ''
+                        readonly: True
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_9
+                        text: ''
+                        readonly: True
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+                    TextInput:
+                        id: date_10
+                        text: ''
+                        readonly: True
+                        size_hint: 1, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text: self.text = self.text.replace(' ','')
+
+
+
+                Label:
+                    size_hint: 1,None
+                    height: dp(70)
+                GridLayout:
+                    cols: 3
+                    MDTextField:
+                        id: photo_location_path
+                        #text: "C:/Users/user/PycharmProjects/ShareHolder Registration Form/background_files/images.jpg"
+                        hint_text: 'Photo Path Location'
+                        mode: 'fill'
+                        readonly: True
+                        fill_color_normal: 1,1,1,1
+                        on_focus:
+                            self.required = True
+                        size_hint: 0.5, None
+                        height: dp(55)
+                        multiline: False
+                    Label:
+                        size_hint: None,None
+                    MDFloatingActionButton:
+                        icon: "image-search"
+                        on_press: root.show_image()
+                Label:
+                    size_hint: 1,None
+                    height: dp(100)
+                Label:
+                    text: 'Photo Identification provided:'
+                    color: 0,0,0,1
+                    font_size: dp(19)
+                    bold: True
+                    size_hint: 0.5, None
+                    height:dp(1)
+                Label:
+                    text: "NOTE: If Your Selection Is 'Other' Please Mention The Source In The Given Blank :"
+                    color: 1,0,0,1
+                    font_size: dp(17)
+                    bold: True
+                    size_hint: 0.5, None
+                    height:dp(1)
+                GridLayout:
+                    cols: 4
+                    Label:
+                    Label:
+                        text: 'Drivers License:'
+                        color: 0,0,0,1
+                        font_size: dp(16)
+                        bold: True
+                        size_hint: None, None
+
+                    MDCheckbox:
+                        id: checkbox1
+                        size_hint: None,None
+                        pos_hint:{'x':0.75}
+                        on_active:
+                            root.keep_state_identification()
+                    Label:
+
+                GridLayout:
+                    cols: 4
+                    Label:
+                    Label:
+                        text: 'Passport:'
+                        color: 0,0,0,1
+                        font_size: dp(16)
+                        bold: True
+                        size_hint: None, None
+
+                    MDCheckbox:
+                        id: checkbox2
+                        size_hint: None,None
+                        pos_hint:{'x':0.75}
+                        on_active:
+                            root.keep_state_identification()
+                    Label:
+                GridLayout:
+                    cols: 4
+                    Label:
+                    Label:
+                        text: 'Other:'
+                        color: 0,0,0,1
+                        font_size: dp(16)
+                        bold: True
+                        size_hint: None, None
+
+                    MDCheckbox:
+                        id: checkbox3
+                        size_hint: None,None
+                        pos_hint:{'x':0.75}
+                        on_active:
+                            root.keep_state_identification()
+                    GridLayout:
+                        rows:3
+                        Label:
+                        MDTextField:
+                            id: other
+                            text: ''
+                            hint_text: 'Other Source'
+                            mode: 'fill'
+                            readonly: True
+                            max_text_length: 25
+                            fill_color_normal: 1,1,1,1
+                            on_focus:
+                                self.required = True
+                            size_hint: 0.5, None
+                            height: dp(30)
+                            multiline: False
+                        Label:
+                Label:
+                GridLayout:
+                    cols: 1
+                    MDTextField:
+                        id: photo_identification_path
+                        hint_text: 'Photo Path Of Identification'
+                        mode: 'fill'
+                        readonly: True
+                        max_text_length: 120
+                        fill_color_normal: 1,1,1,1
+                        on_focus:
+                            self.required = True
+                        size_hint: 1, None
+                        height: dp(55)
+                        multiline: False
+
+
+                Label:
+                    size_hint: 1,None
+                    height: dp(50)
+
+                Label:
+                    text: 'Section 2: PERSONAL DETAILS'
+                    color: 0,0,0,1
+                    font_size: dp(20)
+                    bold: True
+                    size_hint: 0.5,None
+                    height: dp(1)
+
+                MDTextField:
+                    id: father_name
+                    text: ''
+                    readonly: True
+                    hint_text: 'Father Name'
+                    mode: 'fill'
+                    max_text_length: 30
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(30)
+                    multiline: False
+
+
+                MDTextField:
+                    id: mother_name
+                    text: ''
+                    readonly: True
+                    hint_text: 'Mother Name'
+                    mode: 'fill'
+                    max_text_length: 30
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+
+                Label:
+                    text: "NOMINEE DETAILS:"
+                    color: 0,0,0,1
+                    font_size: dp(19)
+                    bold: True
+                    size_hint: 0.5, None
+                    height:dp(1)
+
+
+                GridLayout:
+                    cols:3
+                    Label:
+                        text: 'NAME'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        bold: True
+                        size_hint: 0.5, None
+
+                    Label:
+                        text: 'RELATION WITH SH.'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        bold: True
+                        size_hint: 0.5, None
+                        height:
+                    Label:
+                        text: 'PERCENTAGE'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        bold: True
+                        size_hint: 0.5, None
+                        height:
+                GridLayout:
+                    cols: 4
+
+                    Label:
+                        text: '1.'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        size_hint: None, None
+                        width: dp(10)
+                        height:dp(10)
+
+                    TextInput:
+                        id: name_1
+                        text: ''
+                        hint_text: '1.'
+                        readonly: True
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: relation_1
+                        text: ''
+                        readonly: True
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: percentage_1
+                        text: ''
+                        readonly: True
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_percentage1_sign(self.text)
+                    Label:
+                        text: '2.'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        size_hint: None, None
+                        width: dp(10)
+                        height:dp(10)
+                    TextInput:
+                        id: name_2
+                        text: ''
+                        readonly: True
+                        hint_text: '2.'
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: relation_2
+                        text: ''
+                        readonly: True
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: percentage_2
+                        text: ''
+                        readonly: True
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_percentage2_sign(self.text)
+                    Label:
+                        text: '3.'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        size_hint: None, None
+                        width: dp(10)
+                        height:dp(10)
+                    TextInput:
+                        id: name_3
+                        text: ''
+                        readonly: True
+                        hint_text: '3.'
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: relation_3
+                        text: ''
+                        readonly: True
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: percentage_3
+                        text: ''
+                        readonly: True
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_percentage3_sign(self.text)
+                    Label:
+                        text: '4.'
+                        color: 0,0,0,1
+                        font_size: dp(19)
+                        size_hint: None, None
+                        width: dp(10)
+                        height:dp(10)
+                    TextInput:
+                        id: name_4
+                        text: ''
+                        readonly: True
+                        hint_text: '4.'
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: relation_4
+                        text: ''
+                        readonly: True
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                    TextInput:
+                        id: percentage_4
+                        text: ''
+                        readonly: True
+                        size_hint: 0.5, None
+                        height: dp(30)
+                        background_color: 1,1,1,1
+                        multiline: False
+                        on_text:
+                            self.text = self.text.replace(' ','')
+                            root.add_percentage4_sign(self.text)
+                Label:
+                    size_hint: 1,None
+                    height: dp(70)
+
+                MDTextField:
+                    id: other_details
+                    text: ''
+                    readonly: True
+                    hint_text: 'Other Details If Any'
+                    mode: 'fill'
+                    max_text_length: 120
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+
+                MDTextField:
+                    id: suggested_by
+                    text: ''
+                    readonly: True
+                    hint_text: 'Suggested By'
+                    mode: 'fill'
+                    max_text_length: 50
+                    fill_color_normal: 1,1,1,1
+                    on_focus:
+                        self.required = True
+                    size_hint: 0.5, None
+                    height: dp(55)
+                    multiline: False
+
+<DeletePasswordWindow>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Image:
+        source: 'background_files/tech1.jpg'
+        #size_hint: None,None
+        size: self.size
+        width: dp(1000)
+        color: (1,1,1,0.7)
+        allow_stretch: True
+        keep_ratio: False
+    GridLayout:
+        spacing: 30
+        padding: 40,10
+        cols:1
+        GridLayout:
+            cols: 2
+
+            Image:
+                source:'LOGO-TECH PROGRAM.jpg'
+                size_hint:None,None
+                height: dp(180)
+                width: dp(180)
+            Label:
+                text: 'LE FORM  VENTURA  GLOBAL LLP'
+                color:0,0,0,0.5
+                bold: True
+                font_size:50
+
+        Label:
+            size_hint: None, None
+        MDFillRoundFlatIconButton:
+            text: 'Back'
+            size_hint:None, None
+            icon: 'arrow-left-circle'
+            height: dp(40)
+            width: dp(100)
+            #background_color: 1, 165/255, 0, 0.2
+            color: 1, 168/255, 0, 1
+            #background_normal: ''
+            on_press:
+                root.ids.password.text = ''
+                root.manager.current = 'OpeningWindow'
+                root.manager.transition.direction = 'right'
+                root.parent.get_screen('SearchWindow').ids.registration_no.text = ''
+        Label:
+            text: 'DELETE ACCESS PAGE'
+            color: 0,0,0,1
+            font_size: dp(25)
+            bold: True
+            size_hint: 1,None
+
+
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                Line:
+
+                    width: 5
+                    rectangle: self.x, self.y, self.width, self.height
+        Label:
+            size_hint: None,None
+        GridLayout:
+            cols:3
+            Label:
+                size_hint: None,None
+                width: dp(200)
+            MDTextField:
+                id: password
+                text: ''
+                hint_text: 'Password'
+                mode: 'fill'
+                fill_color_normal: 1,1,1,1
+                size_hint: 0.5, None
+                height: dp(30)
+                multiline: False
+                icon_right: 'key-variant'
+            Label:
+                size_hint: None,None
+                width: dp(200)
+        GridLayout:
+            cols:3
+            Label:
+                size_hint: 1, None
+            MDFillRoundFlatIconButton:
+                text:'Delete'
+                icon: 'delete'
+                size_hint: 1, None
+                height: 70
+                md_bg_color: 1,0,0,1
+                #background_normal: ''
+                pos_hint: {'center_x':0.5}
+                on_press: root.password_check()
+            Label:
+                size_hint: 1, None
+
+
+        Label:
+            size_hint: 1, None
+            height: 100
+
+
+<OpeningPasswordWindow>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    GridLayout:
+        spacing: 30
+        padding: 40,10
+        cols:1
+        GridLayout:
+            cols: 2
+
+            Image:
+                source:'LOGO-TECH PROGRAM.jpg'
+                size_hint:None,None
+                height: dp(180)
+                width: dp(180)
+                allow_stretch: True
+            Label:
+                text: 'LE FORM  VENTURA  GLOBAL LLP'
+                color:0,0,0,0.5
+                bold: True
+                font_size:50
+
+        Label:
+            size_hint: None, None
+            height: dp(100)
+
+
+        Label:
+            size_hint: 1, None
+            height: dp(30)
+        GridLayout:
+            cols:3
+            Label:
+
+            MDTextField:
+                id: password
+                password: True
+                hint_text: 'Password'
+                icon_right: 'key-variant'
+                pos_hint: {'center_x':0.5}
+                size_hint: None,None
+                width: dp(500)
+                on_text_validate: root.enter()
+
+            Label:
+
+        GridLayout:
+            cols:4
+            Label:
+
+            MDCheckbox:
+                size_hint: None,None
+                #width: dp(30)
+                #height: dp(30)
+                on_press: password.password = False if password.password == True else True
+            MDLabel:
+                text: '[ref=Show Password]Show Password[/ref]'
+                markup: True
+                size_hint: 1,None
+            Label:
+
+        Label:
+            size_hint: 1, None
+            height: dp(100)
+        GridLayout:
+            cols:3
+
+            Label:
+                size_hint: None, None
+            MDFillRoundFlatIconButton:
+                #style: "elevated"
+                icon: 'account-arrow-right-outline'
+                text:'Access'
+                #background_color: 1,0,0,1
+                size_hint: 1, None
+                #height: 70
+                #background_normal: ''
+                pos_hint: {'center_x':0.5}
+                on_press: root.enter()
+            Label:
+                size_hint: None, None
+
+
+        Label:
+            size_hint: 1, None
+            height: dp(100)
+
+
+<ChangePasswordWindow>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    GridLayout:
+        spacing: 30
+        padding: 40,10
+        cols:1
+        GridLayout:
+            cols: 2
+
+            Image:
+                source:'LOGO-TECH PROGRAM.jpg'
+                size_hint:None,None
+                height: dp(180)
+                width: dp(180)
+            Label:
+                text: 'LE FORM  VENTURA  GLOBAL LLP'
+                color:0,0,0,0.5
+                bold: True
+                font_size:50
+
+        Label:
+            size_hint: None, None
+        MDFillRoundFlatIconButton:
+            text: 'Back'
+            size_hint:None, None
+            icon: 'arrow-left-circle'
+            height: dp(40)
+            width: dp(100)
+
+            on_press:
+                root.back()
+                #root.manager.current = 'OpeningWindow'
+                #root.manager.transition.direction = 'right'
+        Label:
+            text: 'CHANGE PASSWORD PAGE'
+            color: 0,0,0,1
+            font_size: dp(25)
+            bold: True
+            size_hint: 1,None
+
+
+            canvas.before:
+                Color:
+                    rgba: 1,165/255,0,1
+                Line:
+
+                    width: 5
+                    rectangle: self.x, self.y, self.width, self.height
+        GridLayout:
+            cols:2
+
+            MDTextField:
+                id: old_password
+                text: ''
+                hint_text: 'Old Password'
+                mode: 'fill'
+                fill_color_normal: 1,1,1,1
+                size_hint: 0.5, None
+                height: dp(30)
+                multiline: False
+                icon_right: 'key-variant'
+
+            MDTextField:
+                id: new_password
+                text: ''
+                hint_text: 'New Password'
+                mode: 'fill'
+                fill_color_normal: 1,1,1,1
+                size_hint: 0.5, None
+                height: dp(30)
+                multiline: False
+                icon_right: 'key-variant'
+                on_text: self.text = self.text.replace(' ', '')
+
+        GridLayout:
+            cols:3
+            Label:
+                size_hint: None, None
+            MDFillRoundFlatIconButton:
+                text: 'Change Password'
+                size_hint:1, None
+                icon: 'key-change'
+                height: dp(40)
+                width: dp(100)
+                md_bg_color: 0,0.7,0,1
+                on_press: root.change_password()
+            Label:
+                size_hint: None, None
+
+        Label:
+            size_hint: 1, None
+            height: 100
+
+<AdministrativeWindow>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Image:
+        source: 'background_files/tech1.jpg'
+        #size_hint: None,None
+        size: self.size
+        width: dp(1000)
+        color: (1,1,1,0.7)
+        allow_stretch: True
+        keep_ratio: False
+    GridLayout:
+        spacing: 30
+        padding: 40,30
+        rows: 4
+        GridLayout:
+            cols: 2
+
+            Image:
+                source:'LOGO-TECH PROGRAM.jpg'
+                size_hint:None,None
+                height: dp(180)
+                width: dp(180)
+            Label:
+                text: 'LE FORM  VENTURA  GLOBAL LLP'
+                color:0,0,0,0.5
+                bold: True
+                font_size:50
+        Label:
+            size_hint: None,None
+            height: dp(160)
+        MDFillRoundFlatIconButton:
+            text: 'Back'
+            size_hint:None, None
+            icon: 'arrow-left-circle'
+            height: dp(40)
+            width: dp(100)
+            #background_color: 1, 165/255, 0, 0.2
+            color: 1, 168/255, 0, 1
+            #background_normal: ''
+            on_press:
+                root.manager.current = 'OpeningWindow'
+                root.manager.transition.direction = 'right'
+
+        Label:
+            size_hint: None,None
+            height: dp(500)
+
+    BoxLayout:
+        spacing: 50
+        orientation: 'vertical'
+
+        MDFillRoundFlatIconButton:
+            text: 'Existing Share Holder'
+            font_size: 30
+            icon: 'account-edit-outline'
+            #md_bg_color: (1,165/255,0,1)
+            bold: True
+            size_hint: 0.75,None
+            height: dp(60)
+            pos_hint: {'center_x': 0.5}
+            on_press:
+                root.manager.current = 'SearchWindow'
+                root.manager.transition.direction = 'left'
+                root.set_call_page(True)
+
+        MDFillRoundFlatIconButton:
+            text: 'Change Password'
+            font_size: 30
+            icon: 'shield-key-outline'
+            #md_bg_color: (1,165/255,0,1)
+            bold: True
+            size_hint: 0.75,None
+            height: dp(60)
+            pos_hint: {'center_x': 0.5}
+            on_press:
+                root.manager.current = 'ChangePasswordWindow'
+                root.manager.transition.direction = 'left'
+
+        Label:
+            size_hint: 1,None
+            height: dp(1)
+
+
+<PasswordDialogView>:
+    size_hint: 1, None
+    height: dp(150)
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:
+            size_hint: 1,None
+            text: 'Please Enter Your Password To Access The Administration Page'
+            color: 0.5,0.5,0.5,1
+            pos_hint: {'x':0}
+        BoxLayout:
+            MDTextField:
+                id: admin_password
+                password: True
+                hint_text: 'Password'
+                size_hint: 1,None
+                #on_text: root.password_update(self.text)
+            MDIconButton:
+                id: eye_icon
+                icon: "eye-off"
+                #pos_hint: {"y": .5}
+                pos: admin_password.width - self.width + dp(8), 0
+                theme_text_color: "Hint"
+                on_release:
+                    self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+                    admin_password.password = False if admin_password.password is True else True
+
+<RoundedButton@Button>:
+    background_color: (0,0,0,0)
+    background_normal:''
+    canvas.before:
+        Color:
+            rgba: (1,165/255,0,1) if self.state == 'normal' else (1,190/255,0,1)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [18]
+
+
+<RoundedButton1@Button>:
+    background_color: (0,0,0,0)
+    background_normal:''
+    canvas.before:
+        Color:
+            rgba: (1,165/255,0,0.1) if self.state == 'normal' else (1,165/255,0,0.3)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [25]
+
+<RoundedButton2@Button>:
+    background_color: (0,0,0,0)
+    background_normal:''
+    canvas.before:
+        Color:
+            rgba: (1,0,0,1) if self.state == 'normal' else (1,0,0,0.3)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [25]
+
+
+<RoundedButton3@Button>:
+    background_color: (0,0,0,0)
+    background_normal:''
+    canvas.before:
+        Color:
+            rgba: (0,0.7,0,1) if self.state == 'normal' else (0,0.7,0,0.7)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [25]
+
